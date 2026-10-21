@@ -170,7 +170,37 @@ für ein realistisches Sim-Racing-Erlebnis.
     Drehzahlanzeige. Konstruktion und Anpassung im Eigenbau.
   </p>
 
-</article>
+<div class="sim-gallery">
+
+  <img src="bilder/Dashboard%20mit%20Drehzahlanzeige%201.png"
+       alt="Dashboard mit Drehzahlanzeige – zweite Ansicht"
+onclick="openGalleryImage(this)">
+
+  <img src="bilder/Led%20Drehzahl%20RGB.png"
+       alt="LED-Drehzahlanzeige RGB"
+onclick="openGalleryImage(this)">
+  <img src="bilder/Whaveshare%201280x400%20Display.png"
+      alt="Waveshare Display 1280 x 400"
+onclick="openGalleryImage(this)">
+</div>
+
+<style>
+.sim-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.sim-gallery img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  background: #15171b;
+  border-radius: 8px;
+  cursor: pointer;
+}
+</style></article>
 
 </main>
 
@@ -187,6 +217,11 @@ für ein realistisches Sim-Racing-Erlebnis.
 </div>
 
 <script>
+function openGalleryImage(img) {
+  document.querySelector("#viewer img").src = img.src;
+  document.querySelector("#viewer img").alt = img.alt;
+  openViewer();
+}
 function openViewer() {
   document.getElementById("viewer").classList.add("open");
 }
