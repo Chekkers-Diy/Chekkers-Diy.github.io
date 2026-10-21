@@ -2,38 +2,413 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Automöbel | Chekkers DIY</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AUTOMÖBEL | Checkers DIY</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;background:#101216;color:#f4f4f4;font-family:Arial,Helvetica,sans-serif}header{text-align:center;padding:52px 20px 30px;background:linear-gradient(135deg,#232831,#111317);border-bottom:2px solid #bd3339}h1{font-size:clamp(32px,5vw,55px);margin:8px 0}header p{color:#b9bdc3}nav{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}nav a{color:#fff;text-decoration:none;padding:9px 16px;border:1px solid #555;border-radius:7px}nav a:hover{border-color:#e14850}main{max-width:1200px;margin:45px auto;padding:0 20px}.intro{text-align:center;color:#b9bdc3;margin-bottom:35px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:24px}.card{overflow:hidden;background:#1c2026;border:1px solid #353b44;border-radius:12px}.photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;padding:8px;background:#0b0d10}.photos img{display:block;width:100%;height:115px;object-fit:cover;cursor:zoom-in;border-radius:4px}.photos img:first-child{grid-column:1/-1;height:210px}.photos img:hover{opacity:.8}.details{padding:16px 18px 22px}h2{font-size:21px;margin:0 0 9px}.details p{margin:0;color:#c4c6cb;font-size:14px;line-height:1.55}footer{text-align:center;color:#878b92;padding:40px 20px}.viewer{display:none;position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.96);align-items:center;justify-content:center;flex-direction:column;padding:45px 65px}.viewer.open{display:flex}.viewer img{max-width:100%;max-height:calc(100vh - 145px);object-fit:contain}.viewer button{position:absolute;border:1px solid #777;background:#25272c;color:white;border-radius:8px;cursor:pointer;font-size:30px;padding:8px 16px}.close{top:12px;right:18px}.prev{left:12px;top:48%}.next{right:12px;top:48%}.caption{text-align:center;margin-top:14px;color:#ddd;font-size:14px}@media(max-width:500px){.viewer{padding:55px 48px}.viewer button{font-size:22px;padding:7px 11px}}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #101216;
+  color: #f4f4f4;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  text-align: center;
+  padding: 45px 20px 30px;
+  background: linear-gradient(135deg, #232831, #111317);
+  border-bottom: 2px solid #bd3339;
+}
+
+h1 {
+  font-size: clamp(32px, 5vw, 55px);
+  margin: 8px 0;
+  letter-spacing: 2px;
+}
+
+header p {
+  color: #cccccc;
+}
+
+nav {
+  margin-top: 25px;
+}
+
+nav a {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  margin: 4px;
+  border: 1px solid #555;
+  border-radius: 6px;
+}
+
+nav a:hover {
+  background: #bd3339;
+}
+
+main {
+  max-width: 1250px;
+  margin: auto;
+  padding: 35px 20px;
+}
+
+.intro {
+  text-align: center;
+  color: #cccccc;
+  margin-bottom: 35px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: #20242b;
+  border: 1px solid #383d45;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card h2 {
+  font-size: 21px;
+  margin: 18px 18px 8px;
+}
+
+.card p {
+  color: #cccccc;
+  margin: 0 18px 18px;
+  line-height: 1.5;
+}
+
+.photos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+  padding: 5px;
+}
+
+.photos img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  background: #15171b;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform .2s;
+}
+
+.photos img:first-child {
+  grid-column: 1 / -1;
+  height: 250px;
+}
+
+.photos img:hover {
+  transform: scale(1.02);
+}
+
+.viewer {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.96);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.viewer.open {
+  display: flex;
+}
+
+.viewer img {
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+.caption {
+  color: white;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 40px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,.15);
+  border: none;
+  color: white;
+  font-size: 35px;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #aaaaaa;
+  border-top: 1px solid #333;
+  margin-top: 40px;
+}
 </style>
 </head>
+
 <body>
-<header><h1>CHEKKERS CUSTOM CREATIONS</h1><p>AUTOMÖBEL – aus automobilen Klassikern werden einzigartige Möbelstücke.</p><nav><a href="index.html">Startseite</a><a href="diy-pc.html">DIY-PC</a><a href="automotive.html">AUTOMÖBEL</a></nav></header>
-<main><p class="intro">Acht individuelle Eigenbauten – von der Karosserie bis zum fertigen Möbelstück.<br>Ein Bild anklicken und mit den Pfeilen durch die Fotos des Projekts blättern.</p><section class="grid" id="projects"></section></main>
-<footer>© CHEKKERS DIY · Mit Leidenschaft selbst gebaut.</footer>
-<div id="viewer" class="viewer" role="dialog" aria-modal="true" aria-label="Bildergalerie"><button class="close" onclick="closeViewer()" aria-label="Schließen">×</button><button class="prev" onclick="step(-1)" aria-label="Vorheriges Bild">❮</button><img id="large" alt="Großansicht"><button class="next" onclick="step(1)" aria-label="Nächstes Bild">❯</button><div class="caption" id="caption"></div></div>
+
+<header>
+  <h1>CHECKERS CUSTOM CREATIONS</h1>
+  <p>AUTOMÖBEL – Einzigartige Möbelstücke aus automobilen Klassikern</p>
+
+  <nav>
+    <a href="index.html">Startseite</a>
+    <a href="diy-pc.html">DIY-PC</a>
+    <a href="automotive.html">AUTOMÖBEL</a>
+    <a href="backgammon.html">BACKGAMMON</a>
+  </nav>
+</header>
+
+<main>
+
+<p class="intro">
+Hier entstehen individuelle Eigenbauten –
+von der Karosserie bis zum fertigen Möbelstück.
+</p>
+
+<section class="grid" id="projects"></section>
+
+</main>
+
+<footer>
+  CHECKERS DIY – Mit Leidenschaft selbst gebaut.
+</footer>
+
+<div id="viewer" class="viewer" role="dialog"
+     aria-modal="true" aria-label="Bildergalerie">
+
+  <button class="close" onclick="closeViewer()"
+          aria-label="Schließen">&times;</button>
+
+  <button class="prev" onclick="step(-1)"
+          aria-label="Vorheriges Bild">&#10094;</button>
+
+  <img id="large" alt="Großansicht">
+
+  <button class="next" onclick="step(1)"
+          aria-label="Nächstes Bild">&#10095;</button>
+
+  <div class="caption" id="caption"></div>
+</div>
+
 <script>
-// Dateinamen entsprechen exakt den bereits im GitHub-Ordner "bilder" vorhandenen Dateien.
-const projects=[
-{name:'Golf 1 – Schreibtisch',desc:'Golf-Front mit Glasplatte und Sportsitz.',images:['schreibtisch.jpg','schreibtisch-bau.jpg','schreibtisch bau 1.png','schreibtisch bau 2.png']},
-{name:'Golf – Heck-Sideboard',desc:'Heckpartie mit aufklappbarer Vitrine.',images:['sideboard.jpg','sideboard-detail.jpg','sideboard 1.JPG','sideboard bau 1.png']},
-{name:'VW T2 – Fernsehschrank',desc:'Klassischer Bulli mit TV und Hi-Fi-Fach.',images:['t2.jpg','t2-offen.jpg','t2-bau.jpg','t2-bau-seite.jpg']},
-{name:'VW Käfer – Heckschrank',desc:'Käferheck mit Platz für Sammlerstücke.',images:['kaeferheck.jpg','kaeferheck-offen.jpg','kaeferheck-bau.jpg','käferheck bau 1.png','käferheck bau 2.png']},
-{name:'VW Boxermotor – Couchtisch',desc:'Boxermotor unter einer Glasplatte.',images:['motor-tisch.jpg']},
-{name:'VW-Bus – Tresen',desc:'Bulli-Front als außergewöhnliches Möbelstück.',images:['tresen.jpg']},
-{name:'VW Käfer – Armaturenbrett',desc:'Klassisches Dashboard mit Tablet.',images:['armaturenbrett.jpg']},
-{name:'VW Käfer – Deckenfluter',desc:'Motorhaube in mattem Schwarz.',images:['deckenfluter.jpg','käfer motorklappe deckenfluter 1.JPG']},
+
+// Alle Dateinamen entsprechen dem Ordner "bilder".
+// Groß- und Kleinschreibung sowie Leerzeichen beachten.
+
+const projects = [
+
+  {
+    name: "Golf 1 – Schreibtisch",
+    desc: "Golf-Front mit Glasplatte und Sportsitz.",
+    images: [
+      "schreibtisch.jpg",
+      "Schreibtisch-bau.jpg",
+      "schreibtisch bau 1.jpg",
+      "schreibtisch bau 2.jpg"
+    ]
+  },
+
+  {
+    name: "Golf – Hecksideboard",
+    desc: "Heckpartie mit aufklappbarer Vitrine.",
+    images: [
+      "sideboard.jpg",
+      "sideboard 1.jpg",
+      "sideboard bau 1.jpg"
+    ]
+  },
+
+  {
+    name: "VW T2 – Fernsehschrank",
+    desc: "Klassischer Bulli mit TV und Hi-Fi-Fach.",
+    images: [
+      "t2.jpg",
+      "t2-offen.jpg",
+      "t2-bau.jpg",
+      "t2-bau-seite.jpg"
+    ]
+  },
+
+  {
+    name: "VW Käfer – Heckschrank",
+    desc: "Käferheck mit Platz für Sammlerstücke.",
+    images: [
+      "kaeferheck.jpg",
+      "kaeferheck-offen.jpg",
+      "kaeferheck-bau.jpg",
+      "kaeferheck bau 1.jpg",
+      "kaeferheck bau 2.jpg"
+    ]
+  },
+
+  {
+    name: "VW Boxermotor – Couchtisch",
+    desc: "Boxermotor unter einer Glasplatte.",
+    images: [
+      "motor-tisch.jpg"
+    ]
+  },
+
+  {
+    name: "VW-Bus – Tresen",
+    desc: "Bulli-Front als außergewöhnliches Möbelstück.",
+    images: [
+      "tresen.jpg"
+    ]
+  },
+
+  {
+    name: "VW Käfer – Armaturenbrett",
+    desc: "Klassisches Dashboard als Tablett.",
+    images: [
+      "armaturenbrett.jpg"
+    ]
+  },
+
+  {
+    name: "VW Käfer – Deckenfluter",
+    desc: "Motorhaube in mattem Schwarz.",
+    images: [
+      "deckenfluter.jpg",
+      "kaefer motorklappe deckenfluter 1.jpg"
+    ]
+  }
+
 ];
-let current=[],index=0,projectName='';
-const grid=document.getElementById('projects');
-projects.forEach((p)=>{const article=document.createElement('article');article.className='card';const photos=document.createElement('div');photos.className='photos';p.images.forEach((filename,i)=>{const img=document.createElement('img');img.src='bilder/'+filename;img.alt=p.name+' – Foto '+(i+1);img.loading='lazy';img.onclick=()=>openViewer(p,i);photos.appendChild(img)});const details=document.createElement('div');details.className='details';const h=document.createElement('h2');h.textContent=p.name;const para=document.createElement('p');para.textContent=p.desc;details.append(h,para);article.append(photos,details);grid.appendChild(article)});
-function openViewer(p,i){current=p.images;index=i;projectName=p.name;document.getElementById('viewer').classList.add('open');showImage()}
-function showImage(){document.getElementById('large').src='bilder/'+current[index];document.getElementById('caption').textContent=projectName+' · Foto '+(index+1)+' von '+current.length}
-function step(delta){if(!current.length)return;index=(index+delta+current.length)%current.length;showImage()}
-function closeViewer(){document.getElementById('viewer').classList.remove('open')}
-document.addEventListener('keydown',e=>{if(!document.getElementById('viewer').classList.contains('open'))return;if(e.key==='Escape')closeViewer();if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1)});
-document.getElementById('viewer').addEventListener('click',e=>{if(e.target.id==='viewer')closeViewer()});
+
+let current = [];
+let index = 0;
+let projectName = "";
+
+const grid = document.getElementById("projects");
+
+projects.forEach(project => {
+
+  const article = document.createElement("article");
+  article.className = "card";
+
+  const title = document.createElement("h2");
+  title.textContent = project.name;
+
+  const description = document.createElement("p");
+  description.textContent = project.desc;
+
+  const photos = document.createElement("div");
+  photos.className = "photos";
+
+  project.images.forEach((filename, i) => {
+
+    const img = document.createElement("img");
+
+    img.src = "bilder/" + encodeURIComponent(filename);
+    img.alt = project.name + " – Foto " + (i + 1);
+    img.loading = "lazy";
+
+    img.onclick = () => {
+      openViewer(project, i);
+    };
+
+    photos.appendChild(img);
+
+  });
+
+  article.appendChild(photos);
+  article.appendChild(title);
+  article.appendChild(description);
+
+  grid.appendChild(article);
+
+});
+
+function openViewer(project, i) {
+
+  current = project.images;
+  index = i;
+  projectName = project.name;
+
+  document.getElementById("viewer").classList.add("open");
+
+  showImage();
+
+}
+
+function showImage() {
+
+  document.getElementById("large").src =
+    "bilder/" + encodeURIComponent(current[index]);
+
+  document.getElementById("caption").textContent =
+    projectName + " – Foto " + (index + 1) +
+    " von " + current.length;
+
+}
+
+function step(direction) {
+
+  index = (index + direction + current.length) % current.length;
+
+  showImage();
+
+}
+
+function closeViewer() {
+
+  document.getElementById("viewer").classList.remove("open");
+
+}
+
+document.addEventListener("keydown", event => {
+
+  const viewer = document.getElementById("viewer");
+
+  if (!viewer.classList.contains("open")) return;
+
+  if (event.key === "Escape") closeViewer();
+  if (event.key === "ArrowLeft") step(-1);
+  if (event.key === "ArrowRight") step(1);
+
+});
+
+document.getElementById("viewer").addEventListener("click", event => {
+
+  if (event.target.id === "viewer") closeViewer();
+
+});
+
 </script>
+
 </body>
 </html>
