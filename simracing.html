@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>SIM RACING | Checkers DIY</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #101216;
+  color: #f4f4f4;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  text-align: center;
+  padding: 45px 20px 30px;
+  background: linear-gradient(135deg, #232831, #111317);
+  border-bottom: 2px solid #bd3339;
+}
+
+h1 {
+  font-size: clamp(32px, 5vw, 55px);
+  margin: 8px 0;
+  letter-spacing: 2px;
+}
+
+header p {
+  color: #cccccc;
+}
+
+nav {
+  margin-top: 25px;
+}
+
+nav a {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  margin: 4px;
+  border: 1px solid #555;
+  border-radius: 6px;
+}
+
+nav a:hover {
+  background: #bd3339;
+}
+
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 35px 20px;
+}
+
+.intro {
+  text-align: center;
+  color: #cccccc;
+  margin-bottom: 35px;
+}
+
+.card {
+  background: #20242b;
+  border: 1px solid #383d45;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+
+.card h2 {
+  font-size: 24px;
+  margin: 20px 20px 10px;
+}
+
+.card p {
+  color: #cccccc;
+  margin: 0 20px 22px;
+  line-height: 1.6;
+}
+
+.viewer {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.96);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.viewer.open {
+  display: flex;
+}
+
+.viewer img {
+  max-width: 95vw;
+  max-height: 90vh;
+  object-fit: contain;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 40px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #aaaaaa;
+  border-top: 1px solid #333;
+  margin-top: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>CHECKERS CUSTOM CREATIONS</h1>
+  <p>SIM RACING – Individuelle Technik für das virtuelle Cockpit</p>
+
+  <nav>
+    <a href="index.html">Startseite</a>
+    <a href="diy-pc.html">DIY-PC</a>
+    <a href="automotive.html">AUTOMÖBEL</a>
+    <a href="backgammon.html">BACKGAMMON</a>
+    <a href="simracing.html">SIM RACING</a>
+  </nav>
+</header>
+
+<main>
+
+<p class="intro">
+Eigenentwicklungen, 3D-Druck und individuelle Lösungen
+für ein realistisches Sim-Racing-Erlebnis.
+</p>
+
+<article class="card">
+
+  <img
+    src="bilder/Dashboard%20mit%20Drehzahlanzeige.png"
+    alt="Sim-Racing-Dashboard mit Drehzahlanzeige"
+    onclick="openViewer()"
+  >
+
+  <h2>Dashboard mit Drehzahlanzeige</h2>
+
+  <p>
+    Individuell entwickeltes Dashboard für mein Sim-Racing-Cockpit.
+    Mit einer Auflösung von 1280 × 400 Pixeln und integrierter
+    Drehzahlanzeige. Konstruktion und Anpassung im Eigenbau.
+  </p>
+
+</article>
+
+</main>
+
+<footer>
+  CHECKERS DIY – Mit Leidenschaft selbst gebaut.
+</footer>
+
+<div id="viewer" class="viewer" onclick="closeViewer()">
+  <button class="close" aria-label="Schließen">&times;</button>
+  <img
+    src="bilder/Dashboard%20mit%20Drehzahlanzeige.png"
+    alt="Dashboard Großansicht"
+  >
+</div>
+
+<script>
+function openViewer() {
+  document.getElementById("viewer").classList.add("open");
+}
+
+function closeViewer() {
+  document.getElementById("viewer").classList.remove("open");
+}
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") {
+    closeViewer();
+  }
+});
+</script>
+
+</body>
+</html>
