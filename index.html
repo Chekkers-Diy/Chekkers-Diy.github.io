@@ -253,22 +253,17 @@ footer {
   </form>
 </section>
 
-<div style="text-align:center; margin-top:20px;">
-  <button id="counter-consent" type="button" onclick="loadCounter()">
-    Besucherzähler laden (externer Dienst – Datenschutzhinweise beachten)
-  </button>
-  <div id="visitor-counter"></div>
+<!-- Besucherzähler -->
+<div style="text-align:center; margin:25px 0; color:#aaa; font-size:13px;">
+  <div>Besucher insgesamt:</div>
+
+  <script
+    type="text/javascript"
+    src="https://www.besucherzaehler-kostenlos.de/js/counter.js.php?count=1&id=chekkers-diy.github.io&start=0&design=1b">
+  </script>
+
+  <noscript>Bitte JavaScript aktivieren.</noscript>
 </div>
-
-<script>
-function loadCounter() {
-  document.getElementById("counter-consent").remove();
-
-  const script = document.createElement("script");
-  script.src = "https://www.besucherzaehler-kostenlos.de/js/counter.js.php?design=1b&id=chekkers-diy.github.io&hostname=" + encodeURIComponent(window.location.hostname);
-  document.getElementById("visitor-counter").appendChild(script);
-}
-</script>
   © 2026 CHEKKERS DIY · Built, not bought.
 </footer>
 
