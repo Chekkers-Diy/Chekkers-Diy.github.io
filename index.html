@@ -152,9 +152,53 @@ footer {
   <p>Checkers, Würfelbecher und Co.</p>
 </a></main>
 </div>
+<section id="kontakt" style="max-width:650px; margin:60px auto; padding:25px; background:#303238; border-radius:12px;">
+
+  <h2 style="text-align:center;">KONTAKT</h2>
+  <p style="text-align:center;">Fragen oder Anregungen? Schreib mir!</p>
+
+  <form action="https://api.web3forms.com/submit" method="POST">
+
+    <input type="hidden" name="access_key"
+           value="fb9c8a00-1db1-46b7-905f-d008d78d7b54">
+
+    <label for="kontakt-name">Name</label>
+    <input id="kontakt-name" type="text" name="name" required
+           style="width:100%; padding:12px; margin:8px 0 18px;">
+
+    <label for="kontakt-email">E-Mail-Adresse</label>
+    <input id="kontakt-email" type="email" name="email" required
+           style="width:100%; padding:12px; margin:8px 0 18px;">
+
+    <label for="kontakt-nachricht">Nachricht</label>
+    <textarea id="kontakt-nachricht" name="message" rows="6" required
+              style="width:100%; padding:12px; margin:8px 0 18px;"></textarea>
+
+    <input type="checkbox" id="datenschutz" required>
+    <label for="datenschutz">
+     Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener noreferrer" style="color:#ff9900;">Datenschutzerklärung</a> zur Kenntnis genommen.
+    </label>
+
+    <p style="font-size:13px; color:#bbb;">
+      Deine Angaben werden zur Bearbeitung deiner Anfrage
+      über Web3Forms verarbeitet.
+    </p>
+<div class="h-captcha" data-captcha="true"></div>
+    <button type="submit"
+            style="background:#ff9900; color:#111; padding:14px 28px;
+                   border:0; border-radius:8px; cursor:pointer;
+                   font-weight:bold;">
+      Nachricht senden
+    </button>
+
+  </form>
+</section>
+
 <footer>
   © 2026 CHEKKERS DIY · Built, not bought.
 </footer>
+
+<script src="https://web3forms.com/client/script.js" async defer></script>
 
 </body>
 </html>
