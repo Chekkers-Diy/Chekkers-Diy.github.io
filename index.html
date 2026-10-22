@@ -114,14 +114,17 @@ footer {
     padding: 20px 15px;
     margin: 20px auto;
   }
+.projects {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
 
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .card {
-    width: 100%;
-  }
+.card {
+  width: 100%;
+  min-width: 0;
+  padding: 15px 10px;
+  overflow-wrap: anywhere;
+}
 }</style>
 </head>
 
