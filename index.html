@@ -265,7 +265,7 @@ function loadCounter() {
   document.getElementById("counter-consent").remove();
 
   const script = document.createElement("script");
-  script.src = "https://www.besucherzaehler-kostenlos.de/js/counter.js.php?count=1&id=chekkers-diy.github.io&start=0&design=1b";
+  script.src = "https://www.besucherzaehler-kostenlos.de/js/counter.js.php?design=1b&id=chekkers-diy.github.io&hostname=" + encodeURIComponent(window.location.hostname);
   document.getElementById("visitor-counter").appendChild(script);
 }
 </script>
